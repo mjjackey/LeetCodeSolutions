@@ -26,7 +26,7 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        nums_dict={}
+        nums_dict={}  # value:index in array, sum-value is not kept in the dictionary
         r=[]
         for i in range(len(nums)):
             if(nums_dict.get(target-nums[i])==None):
