@@ -1,2 +1,3 @@
 # LeetCodeSolutions
-The solutions for LeetCode
+The solutions for LeetCode, written by Python.
+
