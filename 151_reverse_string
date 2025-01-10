@@ -1,0 +1,43 @@
+
+import collections
+
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        return ' '.join(s.strip().split()[::-1])
+
+class Solution1:
+    # double pointer
+    def reverseWords(self, s: str) -> str:
+        s=s.strip()
+        # Search from last word
+        i=j=len(s)-1
+        res=[]
+        while i>=0:
+            while(i>=0 and s[i]!=' '): i-=1 #Search the first space
+            res.append(s[i+1:j+1])
+            while(i>=0 and s[i]==' '): i-=1 #Search the tail of the next word
+            j=i
+        return  ' '.join(res)
+
+class Solution2:
+    def reverseWords(self, s: str) -> str:
+        left,right= 0,len(s)-1
+        deq,str_word=collections.deque(),[]
+        # eliminate the spaces of head and nail
+        while left<=right and s[left]==' ': left+=1
+        while right>=left and s[right]==' ': right-=1
+        while left<=right:
+            if s[left]!=' ': str_word.append(s[left])
+            elif s[left]==' ' and str_word:
+                deq.appendleft(''.join(str_word))
+                str_word=[]
+            left+=1
+        if str_word: deq.appendleft(''.join(str_word))
+        return ' '.join(deq)
+
+
+sol=Solution2()
+s=" hello world  "
+res=sol.reverseWords(s)
+print(res)
+
