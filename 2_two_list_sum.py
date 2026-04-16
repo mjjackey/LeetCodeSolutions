@@ -17,7 +17,7 @@ class Solution(object):
         sum2=0
         sum1_list=[]
         sum2_list=[]
-        while(l1!=None or l2!=None):
+        while l1 is not None or l2 is not None:
             # if(l1!=None):  #### for len(l1) != len(l2)
             l1,x1=Solution.getValueAndMoveToNext(self,l1)
             # sum1 = sum1 * 10  # put before
@@ -40,27 +40,27 @@ class Solution(object):
 
         sum=sum1+sum2
         print(sum1,sum2,sum)
-        if(sum==0): return ListNode(0)  ####
+        if sum==0: return ListNode(0)  ####
         res_list=[]
-        while(sum>0):
+        while sum>0:
             res = sum % 10
             print("res", res)
             sum=sum//10
             print("sum",sum)
             res_list_node = ListNode(res)
-            if(len(res_list)>0): Solution.genNextNode(self,res_list[-1],res_list_node)
+            if len(res_list)>0: Solution.genNextNode(self, res_list[-1], res_list_node)
             res_list.append(res_list_node)
         return res_list
 
     def getValueAndMoveToNext(self, l):
         x=0  ##### assign before reference
-        if (l != None):
+        if l is not None:
             x = l.val
             l = l.next
-        return (l,x)
+        return l,x
 
     def genNextNode(self, l1, l2):
-        if (l1 != None and l2 != None):
+        if l1 is not None and l2 is not None:
             l1.next = l2
 
 if __name__ == "__main__":
